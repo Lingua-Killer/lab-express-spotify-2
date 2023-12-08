@@ -22,9 +22,8 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 // Recupera un token de acceso para la API de Spotify
-spotifyApi
-    .clientCredentialsGrant()
-    .then(data => spotifyApi.setAccessToken(data.body['access_token']))
+spotifyApi.clientCredentialsGrant()
+    .then(responseFromCredentials => spotifyApi.setAccessToken(responseFromCredentials.body['access_token']))
     .catch(error => console.log('Something went wrong when retrieving an access token', error));
 
 // Configura la ruta de búsqueda de inicio
